@@ -18,18 +18,31 @@ var LoginComponent = (function () {
     function LoginComponent(loginService, router) {
         this.loginService = loginService;
         this.router = router;
+        this.loggedIn = false;
+        this.msg_error = "";
+        this.loggedIn = !!localStorage.getItem('auth_token');
     }
     LoginComponent.prototype.actionLogin = function (username, password) {
         var _this = this;
+        this.msg_error = "";
         this.loginService.loginRequest(username, password)
             .subscribe(function (res) {
             if (res) {
                 localStorage.setItem('auth_token', res.data.access_token);
-                _this.router.navigate(['']);
+                location.reload();
             }
         }, function (err) {
-            console.log(err);
+            if (err)
+                _this.msg_error = "Invalid username or password";
         });
+    };
+    LoginComponent.prototype.isLoggedIn = function () {
+        return this.loggedIn;
+    };
+    LoginComponent.prototype.ngOnInit = function () {
+        if (this.isLoggedIn()) {
+            this.router.navigate(['']);
+        }
     };
     LoginComponent = __decorate([
         core_1.Component({

@@ -78,7 +78,7 @@ import {User} from "./user/user.model";
             </ul>
             <ul class="nav navbar-nav navbar-right hidden-sm" *ngIf="isLoggedIn() == true">
                 <li><a [routerLink]="['profile']"><div id="main-menu-register">{{fullName}}</div></a></li>
-                <li><a (click)="logout()">Đăng xuất</a></li>
+                <li><a href='' (click)="logout()">Đăng xuất</a></li>
             </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
@@ -174,4 +174,5 @@ export class AppComponent implements OnInit {
             this.loadUserProfile();
         }
     }
+
 }
