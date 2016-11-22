@@ -6,7 +6,7 @@ var AppSettings = (function () {
     function AppSettings() {
     }
     Object.defineProperty(AppSettings, "API_ENDPOINT", {
-        get: function () { return "http://localhost:8080/api/v1"; },
+        get: function () { return "http://139.162.52.76:8080/api/v1"; },
         enumerable: true,
         configurable: true
     });

@@ -26,8 +26,14 @@
                     <div class="img">
                         <img src="../../images/imgs/img-01.png" alt="">
                     </div>
-                    <div class="author">
+                    <div class="author" *ngIf="unitType != 'Listening'">
                         <p>{{unitThreads}}</p>
+                    </div>
+                    <div class="author" *ngIf="unitType == 'Listening'">
+                        <p>Nghe và trả lời câu hỏi?</p>
+                        <audio controls>
+                            <source src="../../media/phone.mp3" type="audio/mpeg">
+                        </audio>
                     </div>
                 </div>
             </div>
